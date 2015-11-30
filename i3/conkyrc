@@ -1,0 +1,97 @@
+out_to_x no
+out_to_console yes
+short_units yes
+update_interval 1
+
+TEXT
+
+[\
+# Kernel:
+{"full_text":"K","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${kernel}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+
+# FS "/"
+{"full_text":"FS","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${fs_used /}/${fs_size /}", "color":"\#EEEEEE","separator":false,"separator_block_width":6},
+
+# CPU temperature:
+{"full_text":"C T°","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${hwmon 2 temp 2}<45}${hwmon 2 temp 2}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon 2 temp 2}<50}${hwmon 2 temp 2}","color":"\#F0DC64","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon 2 temp 2}<55}${hwmon 2 temp 2}","color":"\#FF9933","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon 2 temp 2}>=55}${hwmon 2 temp 2}","color":"\#FF3333","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"C°","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+
+# CPU:
+{"full_text":"CPU","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${cpu cpu0}<25}${cpu cpu0}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${cpu cpu0}<50}${cpu cpu0}","color":"\#F0DC64","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${cpu cpu0}<75}${cpu cpu0}","color":"\#FF9933","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${cpu cpu0}<=100}${cpu cpu0}","color":"\#FF3333","separator":false,"separator_block_width":0},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"%","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+
+# Memory:
+{"full_text":"M","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${memperc}<30}${memeasyfree}","color":"\#AAF096","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${memperc}<60}${memeasyfree}","color":"\#F0DC64","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${memperc}<85}${memeasyfree}","color":"\#FF9933","separator":false,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${memperc}>=85}${memeasyfree}","color":"\#FF3333","separator":false,"separator_block_width":6},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+
+
+# Network Informations
+# Wireless
+${if_up wlp2s0}
+{"full_text": "W","color":"\#888888","separator":false,"separator_block_width":6},
+{"full_text": "${wireless_essid wlp2s0}", "separator":false, "separator_block_width":3, "color":"\#EEEEEE"},
+{"full_text": "${addr wlp2s0}", "color":"\#EEEEEE", "separator":false, "separator_block_width":3},
+{"full_text": "↑", "separator":false, "separator_block_width":1},
+{"full_text": "${upspeed wlp2s0}/s", "min_width":"00000%", "color":"\#EEEEEE", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
+{"full_text": "↓", "separator":false, "separator_block_width":1},
+{"full_text": "${downspeed wlp2s0}/s", "min_width":"00000%", "color":"\#EEEEEE", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
+
+# Ethernet
+${else}${if_up eth0}
+{"full_text": "E:", "separator": false, "separator_block_width":3},
+{"full_text": "${addr eth0}", "color":"\#83b3a3", "separator":false, "separator_block_width":1},
+{"full_text": "${upspeed eth0}/s", "color":"\#EEEEEE", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
+{"full_text": "↑", "separator":false, "separator_block_width":1},
+{"full_text": "${downspeed eth0}/s", "color":"\#EEEEEE", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
+{"full_text": "↓"},
+
+${endif}
+${endif}
+
+# Battery
+{"full_text": "B","color":"\#888888","separator": false,"separator_block_width":3},\
+{"full_text":"${exec acpi -b | awk '{print$5}'}", "color":"\#EEEEEE","separator    ":false,"separator_block_width":6},\
+{"full_text": "${battery_percent BAT0}%", "min_width":"000%", "color":"${if_match ${battery_percent BAT0} > 66}\#EEEEEE${else}${if_match ${battery_percent BAT0} < 33}\#ff0000${else}\#c3bf9f$ {endif}${endif}"},\
+
+# Volume
+#{ "full_text": "R","color":"\#888888","separator":false,"separator_block_width":    6},\
+#{"full_text":"${exec acpi -b | awk '{print$5}'}", "color":"\#EEEEEE","separator    ":false,"separator_block_width":6},\
+
+# Time:
+{"full_text":"D","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${time %d/%m/%Y %k:%M }","color":"\#EEEEEE","separator":false},\
+
+# Volume
+{ "full_text": "♪","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${exec /usr/share/i3blocks/volume}", "color":"\#EEEEEE","separator":false,"separator_block_width":6}\
+
+
+],
+
+
