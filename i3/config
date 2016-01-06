@@ -164,13 +164,13 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Control+m exec i3-sensible-terminal -e htop 
 
 # Nautilus launcher
-bindsym $mod+Shift+n exec nautilus 
+bindsym $mod+Shift+n exec thunar
 
 # Iceweasel laucher
 bindsym $mod+Shift+f exec iceweasel
 
 # Evolution launcher
-bindsym $mod+Shift+t exec evolution
+bindsym $mod+Shift+t exec icedove
 
 # Geany launcher
 bindsym $mod+Shift+g exec geany
@@ -191,7 +191,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Pause mode "$mode_system"
+bindsym Control+$mod+o mode "$mode_system"
 
 # Startup few software (keyring / owncloud / nm-applet) and set touch clic for touchpad
 exec --no-startup-id gnome-keyring-daemon
