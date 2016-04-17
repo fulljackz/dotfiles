@@ -122,14 +122,15 @@ bar {
 	set $white #ffffff
 	set $black #000000
 	set $orange #FF7F00
+	set $gray3 #2F343F
         # Whole color settings
         background #000000
-        statusline #ffffff
-        separator  #666666
+        statusline #000000
+        separator  #333333
         # Type             border  background font
 	focused_workspace  $orange $gray2 $orange 
-        active_workspace   #333333 #222222 $white
-        inactive_workspace #333333 #222222 #888888
+        active_workspace   #333333 #2F343F $white
+        inactive_workspace #333333 #2F343F #888888
         urgent_workspace   #aa0000 #990000 #ffffff
     }
     # i3bar position
@@ -137,7 +138,7 @@ bar {
     # Using custom i3conky
     status_command ~/.config/i3/conkyi3
 }
-client.focused $gray2 $gray2 $orange $black
+client.focused $gray2 $gray3 $orange $black
 
 # Set shutter shortcut
 bindsym Control+$mod+s exec shutter --s --o /tmp/Screen-%Y-%m-%d-%T.png
@@ -199,3 +200,4 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 exec --no-startup-id synclient TapButton1=1
 exec --no-startup-id owncloud
 exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager

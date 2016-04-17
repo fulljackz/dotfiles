@@ -8,11 +8,11 @@ TEXT
 [\
 # Kernel:
 {"full_text":"K","color":"\#888888","separator":false,"separator_block_width":6},\
-{"full_text":"${kernel}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"${kernel}","color":"\#FFFFFF","separator":false,"separator_block_width":6},\
 
 # FS "/"
 {"full_text":"FS","color":"\#888888","separator":false,"separator_block_width":6},\
-{"full_text":"${fs_used /}/${fs_size /}", "color":"\#EEEEEE","separator":false,"separator_block_width":6},
+{"full_text":"${fs_used /}/${fs_size /}", "color":"\#FFFFFF","separator":false,"separator_block_width":6},
 
 # CPU temperature:
 {"full_text":"C T°","color":"\#888888","separator":false,"separator_block_width":6},\
@@ -55,20 +55,20 @@ TEXT
 # Wireless
 ${if_up wlp2s0}
 {"full_text": "W","color":"\#888888","separator":false,"separator_block_width":6},
-{"full_text": "${wireless_essid wlp2s0}", "separator":false, "separator_block_width":3, "color":"\#EEEEEE"},
-{"full_text": "${addr wlp2s0}", "color":"\#EEEEEE", "separator":false, "separator_block_width":3},
+{"full_text": "${wireless_essid wlp2s0}", "separator":false, "separator_block_width":3, "color":"\#FFFFFF"},
+{"full_text": "${addr wlp2s0}", "color":"\#FF7F00", "separator":false, "separator_block_width":3},
 {"full_text": "↑", "separator":false, "separator_block_width":1},
-{"full_text": "${upspeed wlp2s0}/s", "min_width":"00000%", "color":"\#EEEEEE", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
+{"full_text": "${upspeed wlp2s0}/s", "min_width":"00000%", "color":"\#FFFFFF", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
 {"full_text": "↓", "separator":false, "separator_block_width":1},
-{"full_text": "${downspeed wlp2s0}/s", "min_width":"00000%", "color":"\#EEEEEE", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
+{"full_text": "${downspeed wlp2s0}/s", "min_width":"00000%", "color":"\#FFFFFF", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
 
 # Ethernet
 ${else}${if_up eth0}
 {"full_text": "E:", "separator": false, "separator_block_width":3},
 {"full_text": "${addr eth0}", "color":"\#83b3a3", "separator":false, "separator_block_width":1},
-{"full_text": "${upspeed eth0}/s", "color":"\#EEEEEE", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
+{"full_text": "${upspeed eth0}/s", "color":"\#FF7F00", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
 {"full_text": "↑", "separator":false, "separator_block_width":1},
-{"full_text": "${downspeed eth0}/s", "color":"\#EEEEEE", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
+{"full_text": "${downspeed eth0}/s", "color":"\#FF7F00", "separator":false, "separator_block_width":5, "min_width":45, "align":"right"},
 {"full_text": "↓"},
 
 ${endif}
@@ -81,11 +81,11 @@ ${endif}
 
 # Volume
 #{ "full_text": "R","color":"\#888888","separator":false,"separator_block_width":    6},\
-#{"full_text":"${exec acpi -b | awk '{print$5}'}", "color":"\#EEEEEE","separator    ":false,"separator_block_width":6},\
+#{"full_text":"${exec acpi -b | awk '{print$5}'}", "color":"\#FF7F00","separator    ":false,"separator_block_width":6},\
 
 # Time:
 {"full_text":"D","color":"\#888888","separator":false,"separator_block_width":6},\
-{"full_text":"${time %d/%m/%Y %k:%M }","color":"\#EEEEEE","separator":false},\
+{"full_text":"${time %d/%m/%Y %k:%M }","color":"\#FF7F00","separator":false},\
 
 # Volume
 { "full_text": "♪","color":"\#888888","separator":false,"separator_block_width":6},\
