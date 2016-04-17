@@ -13,6 +13,7 @@ plugins=(git)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+eval `dircolors ~/.dircolors-solarized/dircolors.ansi-light`
 
 source $ZSH/oh-my-zsh.sh
 
@@ -32,8 +33,6 @@ fi
 alias ll='ls -l'
 
 alias la='ls -al'
-
-eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
 
 
 PATH="/home/manu/perl5/bin${PATH+:}${PATH}"; export PATH;
