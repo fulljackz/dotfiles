@@ -1,14 +1,15 @@
 ## Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-source /usr/share/autojump/autojump.zsh
+#source /usr/share/autojump/autojump.zsh
 setopt completealiases
 
-ZSH_THEME="crunch"
+#ZSH_THEME="crunch"
+ZSH_THEME="unam"
 
 # COMPLETION_WAITING_DOTS="true"
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git )
+plugins=(git)
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
@@ -27,14 +28,6 @@ if [ -n "$DISPLAY" ]; then
   xset b off
 fi
 
-alias music='cmus'
-
-nohupmplayer() {
-	nohup mplayer $1 > /dev/null&
-}
-alias play=nohupmplayer
-
-alias vpntcpinfra='cd ~/.vpn && sudo openvpn fw-TCP-8080-manu.ovpn'
 
 alias ll='ls -l'
 
@@ -42,3 +35,11 @@ alias la='ls -al'
 
 eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
 
+
+PATH="/home/manu/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/home/manu/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/manu/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/manu/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/manu/perl5"; export PERL_MM_OPT;
+
+export MANPAGER=most
